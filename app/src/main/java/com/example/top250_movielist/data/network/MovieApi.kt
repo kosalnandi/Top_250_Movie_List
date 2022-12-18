@@ -1,4 +1,4 @@
-package com.example.top250_movielist
+package com.example.top250_movielist.data.network
 
 import com.example.top250_movielist.models.Json
 import retrofit2.Response

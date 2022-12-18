@@ -1,4 +1,4 @@
-package com.example.top250_movielist
+package com.example.top250_movielist.util
 
 class Constants {
 
