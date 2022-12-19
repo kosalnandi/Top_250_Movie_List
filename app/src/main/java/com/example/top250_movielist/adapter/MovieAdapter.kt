@@ -2,9 +2,11 @@ package com.example.top250_movielist.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.top250_movielist.databinding.MovieRowLayoutBinding
 import com.example.top250_movielist.models.Item
+import com.example.top250_movielist.util.MovieDiffUtil
 
 class MovieAdapter(
     private var movieList: List<Item> = emptyList()
@@ -33,6 +35,9 @@ class MovieAdapter(
     }
 
     fun setData(listItem: List<Item>) {
+        val diffCallback = MovieDiffUtil(movieList,listItem)
+        val diffCourses = DiffUtil.calculateDiff(diffCallback)
         movieList = listItem
+        diffCourses.dispatchUpdatesTo(this)
     }
 }
