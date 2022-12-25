@@ -17,7 +17,7 @@ import retrofit2.Response
 
 class MainViewModel @ViewModelInject constructor(
     private val repository: Repository,
-    application: MyApplication
+    application: Application
 ): AndroidViewModel(application) {
 
     val movieResponse: MutableLiveData<NetworkResult<Json>> = MutableLiveData()

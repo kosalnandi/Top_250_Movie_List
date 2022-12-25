@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.top250_movielist.databinding.MovieRowLayoutBinding
 import com.example.top250_movielist.models.Item
+import com.example.top250_movielist.models.Json
 import com.example.top250_movielist.util.MovieDiffUtil
 
 class MovieAdapter(
@@ -15,7 +16,7 @@ class MovieAdapter(
     inner class MyViewHolder(private val binding: MovieRowLayoutBinding): RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: Item) {
-            binding.item = item
+            binding.items = item
             binding.executePendingBindings()
         }
     }
@@ -34,10 +35,10 @@ class MovieAdapter(
         return movieList.size
     }
 
-    fun setData(listItem: List<Item>) {
-        val diffCallback = MovieDiffUtil(movieList,listItem)
+    fun setData(listItem: Json) {
+        val diffCallback = MovieDiffUtil(movieList,listItem.items)
         val diffCourses = DiffUtil.calculateDiff(diffCallback)
-        movieList = listItem
+        movieList = listItem.items
         diffCourses.dispatchUpdatesTo(this)
     }
 }
