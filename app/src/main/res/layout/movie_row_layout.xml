@@ -1,71 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    >
+    <data>
+        <variable
+            name="items"
+            type="com.example.top250_movielist.models.Item" />
+    </data>
 
-    <androidx.cardview.widget.CardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        app:cardCornerRadius="18dp"
-        app:cardElevation="2sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        >
 
-        <RelativeLayout
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:cardElevation="2sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
-                android:id="@+id/imageview"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:minHeight="120dp"
-                android:scaleType="centerCrop"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/ratingTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageview"
-                android:gravity="center"
-                android:background="@color/black"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                <ImageView
+                    android:id="@+id/imageview"
+                    loadImageUrls="@{items.image}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:minHeight="120dp"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@tools:sample/avatars" />
 
-            <TextView
-                android:id="@+id/titleTextView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ratingTextView"
-                android:layout_gravity="bottom"
-                android:background="@color/black"
-                android:gravity="center"
-                android:padding="5dp"
-                android:text="@{item.title}"
-                android:textColor="@color/white"
-                tools:text="Super awesome collection" />
+                <TextView
+                    android:id="@+id/total_count"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:elevation="1dp"
+                    android:text="@{items.imDbRating}"
+                    android:layout_below="@id/imageview"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="-16dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/yellow"
+                    android:background="@drawable/oval"
+                    android:gravity="center"
+                    tools:text="12" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/titleTextView"
-                android:background="@color/black"
-                android:padding="2sp"
-                android:text="@{item.year}"
-                android:layout_marginBottom="10dp"
-                android:textAlignment="center"
-                android:textStyle="bold" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/titleTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageview"
+                    android:layout_gravity="bottom"
+                    android:background="@color/onyx_accent"
+                    android:fontFamily="@font/courgette"
+                    android:gravity="center"
+                    android:paddingTop="10dp"
+                    android:text="@{items.title}"
+                    android:textColor="@color/white"
+                    tools:text="Super awesome collection" />
 
-    </androidx.cardview.widget.CardView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/titleTextView"
+                    android:background="@color/onyx_accent"
+                    android:textColor="@color/yellow"
+                    android:padding="5dp"
+                    android:text="@{items.year}"
+                    android:textAlignment="center"
+                    android:textStyle="bold" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
